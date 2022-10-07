@@ -103,8 +103,11 @@ let romanToInt = function(s) {
 // strs[i] consists of only lowercase English letters.
 
 let longestCommonPrefix = function(strs) {
+	//will return an empty string if there is no common prefix
 	if (strs.length <= 0) return '';
+
 	return strs.reduce(function (prev, next) {
+
 		let i = 0;
 		while (prev[i] && next[i] && prev[i] === next[i]) i++;
 		return prev.slice(0, i);
