@@ -45,16 +45,14 @@
 
 
 
-
-
 // Given a roman numeral, convert it to an integer.
 //
 // Input is guaranteed to be within the range from 1 to 3999.
+//input must be a string
 
 
-
-var romanToInt = function(s) {
-	var hash = {
+let romanToInt = function(s) {
+	let hash = {
 		'I': 1,
 		'V': 5,
 		'X': 10,
@@ -63,10 +61,13 @@ var romanToInt = function(s) {
 		'D': 500,
 		'M': 1000
 	};
-	var lastChar = hash[s.charAt(0)];
-	var r = 0;
-	for (var i = 0, l = s.length; i <= l - 1; ++i) {
-		var currentChar = hash[s.charAt(i)];
+	//this will find out the value of the last string
+	let lastChar = hash[s.charAt(0)];
+	let r = 0;
+	for (let i = 0, l = s.length; i <= l - 1; ++i) {
+		let currentChar = hash[s.charAt(i)];
+
+		//
 		if (lastChar < currentChar) {
 			r += currentChar - lastChar - lastChar;
 		} else {
