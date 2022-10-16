@@ -23,3 +23,9 @@
 // 	1 <= nums.length <= 3 * 104
 // 	-3 * 104 <= nums[i] <= 3 * 104
 // Each element in the array appears twice except for one element which appears only once.
+
+const singleNumber = function(nums) {
+	let xor = nums[0]
+	for(let i = 1; i< nums.length; i++) xor ^= nums[i]
+	return xor
+};
