@@ -33,3 +33,19 @@
 // 0 <= digits[i] <= 9
 // digits does not contain any leading 0's.
 
+var plusOne = function(digits) {
+	var length = digits.length;
+	var index = length - 1;
+	while (index >= 0) {
+		if (++digits[index] < 10) break;
+		digits[index] -= 10;
+		if (index === 0) {
+			digits.unshift(1);
+			break;
+		}
+		index--;
+	}
+
+	return digits;
+
+};
