@@ -28,3 +28,11 @@
 // 	1 <= s.length <= 104
 // s consists of only English letters and spaces ' '.
 // 	There will be at least one word in s.
+
+var lengthOfLastWord = function(s) {
+	var str = s.trim();
+	var len = str.length;
+	var i = len - 1;
+	while (i >= 0 && str[i] !== ' ') i--;
+	return len - 1 - i;
+};
