@@ -42,3 +42,5 @@ let twoSum = function(nums, target) {
 	}
 	return []
 };
+
+// console.log(twoSum([2, 0, 3, 4, 5, 6], 5));
