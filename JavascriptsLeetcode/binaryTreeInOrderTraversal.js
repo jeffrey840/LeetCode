@@ -21,3 +21,16 @@
 //
 // 	The number of nodes in the tree is in the range [0, 100].
 // -100 <= Node.val <= 100
+
+let inorderTraversal = function(root) {
+	var res = [];
+	helper(root, res);
+	return res;
+};
+
+let helper = function (root, res) {
+	if (!root) return;
+	if (root.left) helper(root.left, res);
+	res.push(root.val);
+	if (root.right) helper(root.right, res);
+};
