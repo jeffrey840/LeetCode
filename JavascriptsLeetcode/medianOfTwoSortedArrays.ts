@@ -38,8 +38,11 @@ let compare = (i:number, j:number) => {
 
 let arr = nums1.concat(nums2).sort(compare);
 
-if(arr.length % 2 ==0) {
-    return (arr[arr.length/2 -1] + arr[arr.length/2]) / 2;
+//if even
+if(arr.length % 2 == 0) {
+    return (
+        arr[arr.length/2 - 1] + arr[arr.length/2]
+    ) / 2;
 }
 
 return arr[Math.floor(arr.length/2)]
