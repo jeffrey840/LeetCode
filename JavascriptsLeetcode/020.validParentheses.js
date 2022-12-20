@@ -46,4 +46,29 @@ const isValid = (s) => {
 	return stack.length === 0;
 };
 
+//============
+
+var isValid = function(s) {
+	const stack =[];
+	const parens = '() {} []'
+	let i = 0;
+	while (i < s.length) {
+		stack.push(s[i]);
+		i++;
+
+		let open = stack[stack.length - 2 ];
+
+		let closed = stack[stack.length -1];
+
+		// combine the open and closed parens
+		let potParens = open + closed;
+
+		if(parens.includes(potParens)) {
+			stack.pop();
+			stack.pop();
+		}
+	}
+	return stack.length === 0;
+};
+
 
