@@ -24,6 +24,7 @@
 // -5000 <= Node.val <= 5000
 
 //has 2 pointers
+//switching pointers from right to left
 
 var reverseList = function(head) {
 
