@@ -14,25 +14,68 @@
 // Output: false
 //
 
-var isAnagram = function (s, t) {
-	if (s.length !== t.length) return false;
-	const hashTable = {};
+/*
+create a map to keep track of how many instances of a letter
+are inside the original string and compare that to the other string
+	ex: s="two", t="to"
+	char | count
+	t       1
+	w       1
+	o       1
+* */
 
-	for (let i = 0; i < s.length; i++) {
-		if (!hashTable[s[i]]) {
-			hashTable[s[i]] = 0;
+// var isAnagram = function (s, t) {
+// 	if (s.length !== t.length) return false;
+// 	const hashTable = {};
+//
+// 	for (let i = 0; i < s.length; i++) {
+// 		if (!hashTable[s[i]]) {
+// 			hashTable[s[i]] = 0;
+// 		}
+// 		hashTable[s[i]]++;
+// 	}
+//
+// 	for (let j = 0; j < t.length; j++) {
+// 		if (!hashTable[t[j]]) {
+// 			return false;
+// 		}
+// 		hashTable[s[j]]--;
+// 	}
+//
+// 	return true;
+// };
+// console.log(isAnagram("sets", "test"));
+
+var isAnagram = function(s, t) {
+
+	if(s.length !== t.length) {
+		return false
+	}
+	const sLetters = {};
+
+	for (let char of s) {
+		if (!sLetters[char]) {
+			sLetters[char] = 1
+		} else {
+			sLetters[char]++
 		}
-		hashTable[s[i]]++;
 	}
 
-	for (let j = 0; j < t.length; j++) {
-		if (!hashTable[t[j]]) {
-			return false;
+	for (let char of t) {
+		if (!sLetters[char]) {
+			return false
 		}
-		hashTable[s[j]]--;
-	}
 
-	return true;
+		if (sLetters[char]) {
+			sLetters[char]--
+		}
+
+		if (sLetters[char] === 0) {
+			delete sLetters[char]
+		}
+	}
+	return Object.keys(sLetters).length === 0
 };
 
-console.log(isAnagram("sets", "test"));
+
+
