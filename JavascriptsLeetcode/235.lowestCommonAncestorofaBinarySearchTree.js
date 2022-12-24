@@ -68,4 +68,6 @@ var lowestCommonAncestor = function (root, p,q) {
 	if (left == null) return right
 	if (right == null) return left
 	return root
-};
+
+
+}
