@@ -26,6 +26,42 @@
 // 	newInterval.length == 2
 // 0 <= start <= end <= 105
 
+
+//find if theres is an overlap between the intrevals and the intervals
+//merge potential intervals
+//set edgecase
+//if interval is less than the new array then we can just add it to outpu
+
+
 var insert = function(intervals, newInterval) {
 
+	let res = [];
+	let i = 0;
+
+	const start = 0;
+	const end = 1;
+
+	//there is no overlap nbetween the current interval and the new interrval
+	while(i < intervals.length && intervals[i][end] < newInterval[start]) {
+		res.push(intervals[i]);
+		i++;
+	}
+
+	//overlap
+	while (i < intervals.length && intervals[i][start] <= newInterval[end]) {
+		//comparing the teo start values and getting the smallest
+		newInterval[start] = Math.min(newInterval[start], intervals[i][start]);
+		//and update the end value which is going to the maximum between the two
+		newInterval[end] = Math.max(newInterval[end], intervals[i][end]);
+		i++;
+	}
+
+	res.push(newInterval);
+
+	while (i < intervals.length) {
+		res.push(intervals[i])
+		i++;
+	}
+	return  res;
 };
+
