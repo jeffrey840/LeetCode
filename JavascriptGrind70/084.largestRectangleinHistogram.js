@@ -19,14 +19,21 @@
 //brute force
 // 0(n^2 * n)
 var largestRectangleArea = function(heights) {
-	let max = 0;
-	for (let i = 0;i < heights.length;i++) { //start point or the rectangle
-		for(let j = i; j < heights.length;j++) {
-			const min = Math.min(...heights.slice(i,j + 1))
-			max = Math.max(max, min * (j - i + 1) )
+	var len = heights.length;
+	var stack = [];
+	var max = 0;
+	var h = 0;
+	var w = 0;
+
+	for (var i = 0; i <= len; i++) {
+		while (stack.length && (i === len || heights[i] <= heights[stack[stack.length - 1]])) {
+			h = heights[stack.pop()];
+			w = stack.length === 0 ? i : i - stack[stack.length - 1] - 1;
+			max = Math.max(max, h * w);
 		}
+		stack.push(i);
 	}
+
 	return max;
 };
-
 
