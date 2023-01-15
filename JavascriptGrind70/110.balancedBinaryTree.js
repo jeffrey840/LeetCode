@@ -25,6 +25,22 @@
 // 	The number of nodes in the tree is in the range [0, 5000].
 // -104 <= Node.val <= 104
 
+// return boolean
+// create a base case
+// compare the depth difference inside a max depth function
+
+
 var isBalanced = function(root) {
 
+	let res = true;
+
+	let maxDepth = (node) => {
+		if (!node) return 0;
+		let l = maxDepth(node.left), r = maxDepth(node.right);
+		if ( Math.abs(l-r) > 1) res = false;
+
+		return 1 + Math.max(l,r);
+	}
+	maxDepth(root);
+	return res;
 };
