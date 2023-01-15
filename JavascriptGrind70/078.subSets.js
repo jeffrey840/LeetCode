@@ -22,6 +22,43 @@
 // 	-10 <= nums[i] <= 10
 // All the numbers of nums are unique.
 
+//build out a tree
+//start at the 0 index
+/*
+
+nums=[1,2,3]
+
+left will exclude, right will include
+
+				[][1], go to the next index
+
+			[][2] [1][2], go to next index
+
+[0][3]  [2][2,3] [1][1,3] [1,2][1,2,3]
+* */
+
 var subsets = function(nums) {
 
+	//global result
+	const result = [];
+
+	//dfs recursive helper
+	const dfs = (i, nums, slate) => {
+		if(i === nums.length) {
+			result.push(slate.slice());
+			return;
+		}
+
+		//dfs recursive case
+		//exclude
+		dfs(i + 1, nums,slate);
+
+		//include
+		slate.push(nums[i]);
+		dfs(i + 1,nums, slate);
+		slate.pop();
+
+	}
+	dfs(0,nums,[]);
+	return result;
 };
