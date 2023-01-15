@@ -15,6 +15,18 @@
 // Input: heights = [2,4]
 // Output: 4
 
-var largestRectangleArea = function(heights) {
 
+//brute force
+// 0(n^2 * n)
+var largestRectangleArea = function(heights) {
+	let max = 0;
+	for (let i = 0;i < heights.length;i++) { //start point or the rectangle
+		for(let j = i; j < heights.length;j++) {
+			const min = Math.min(...heights.slice(i,j + 1))
+			max = Math.max(max, min * (j - i + 1) )
+		}
+	}
+	return max;
 };
+
+
