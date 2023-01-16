@@ -51,7 +51,35 @@
 // 	There are no repeated edges and no self-loops in the graph.
 // 	The Graph is connected and all nodes can be visited starting from the given node.
 
+/*
+
+using dfs
+
+base case: if node is equal to null return node which is null
+base case #2: if visited at node .val does not equal null, then return node
+
+* */
+
 var cloneGraph = function(node) {
 
+	//storing visited nodes
+	let visited = {};
+
+	function dfs(node) {
+
+		//base cases
+		if(!node) return node;
+		if(!!visited[node.val]) return visited[node.val];
+
+		let root = new Node(node.val);
+		visited[node.val] = root;
+
+		//recurrence relation
+		for(let neighbor of node.neighbors) {
+			root.neighbors.push(dfs(neighbor))
+		}
+		return root;
+	}
+	return dfs(node);
 };
 
