@@ -1,0 +1,48 @@
+
+#fixed size sliding window, (window is always size capped)
+were asked to find the sum of each sub array of length k
+
+compute the sum of the first 3 values , 1+2+3 = 6
+k=3
+[1,2,3,4,5,6]
+|____|
+
+then compute the sum of the next 3, 2+3+4 = 9
+
+|----| = fists sub array
+[1,2,3,4,5,6]
+   |____| = second sub array
+
+# the only thing that changes is the first and last value
+# when the sum is computed sto in an array
+# 1. start by computing hte initial sub array and adding it to the result
+# 2. iterate thru all th remaining sub array
+# 3. remove the initial element and add the next element
+# 4. append it to the result
+
+#dynamic sliding window (for finding  the largest or smallest sub array for matching condition)
+
+we are asked to find the shortest sub array
+
+x=7
+[1,2,3,4,5,6]
+1, is not greater than 7, so window is expanded
+
+1+2 = 3, is not grater than 7 so window increases
+
+1+2+3 = 6, is not greater than 7 , window expands
+
+1,2,3,4 = 10 is greater than 7, but we are finding the smallest sub array so we shrink window from the left, length is 4
+
+2+3+4 = 9 is greater than 7, shrink again,length is 3
+
+3+4= 7 is greater than 7, length is 2
+
+# start from the biginning and expand to match the condition
+# when the condition is met contract from the left side, to find minimum
+
+1.initialize the start and end and store current sum array
+2.iterate from start to end
+3.expand end
+4.each time we expand check weather the current sum is greater than or equal to x
+5. if sum is greater than or equal to x contract backend(left)
