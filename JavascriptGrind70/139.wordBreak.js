@@ -31,6 +31,21 @@
 
 var wordBreak = function(s, wordDict) {
 
+	//create table and set it to array, set it to length of s + 1
+	const table = new Array(s.length + 1).fill(false);
 
+	table[0] = true;
 
+	for(let i = 0;i < table.length;i++) {
+		if (table[i] === false) continue;
+
+		for (let j = i + 1;j< table.length;j++) {
+
+			//check if word is in dictionary
+			if(wordDict.includes(s.slice(i,j))) {
+				table[j] = true;
+			}
+		}
+	}
+	return table[table.length - 1];
 };
