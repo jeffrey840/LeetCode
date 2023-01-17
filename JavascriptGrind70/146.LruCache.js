@@ -37,29 +37,64 @@
 // 0 <= value <= 105
 // At most 2 * 105 calls will be made to get and put.
 
-/**
- * @param {number} capacity
- */
-var LRUCache = function(capacity) {
+/*
 
-};
+cap=3
 
-/**
- * @param {number} key
- * @return {number}
- */
-LRUCache.prototype.get = function(key) {
+k-v pair= 1-a, 2-b, 3-c,d-4
 
-};
+LRU         MRU
+1-a, 2-b, 3-c   //cap is met, removing lru k-pair, and shifting
 
-/**
- * @param {number} key
- * @param {number} value
- * @return {void}
- */
-LRUCache.prototype.put = function(key, value) {
+keep track of the most recently used and least recently used,if at capacity remove lru
+and add new key-value
+LRU         MRU
+2-b, 3-c , d-4
 
-};
+if we use an element the new element will shift left and the used element will shift right to mru
+using 3-c
+LRU      MRU
+2-b,d-4,c-3
+
+if the key-value is changed that k-v pair will shift to the right, then we can change it
+changing d-4
+LRU      MRU
+2-b,c-3, d-4 // changing to e-4
+
+
+* */
+
+
+class LRUCache{
+
+	constructor(capacity) {
+		this.capacity = capacity;
+		this.map = new Map();
+	}
+
+	get(key) {
+		if(this.map.has(key)) {
+			let val = this.map.get(key)
+			this.map.delete(key);
+			this.map.set(key, val);
+			return val
+		} else {
+			return -1
+		}
+	}
+
+	put (key, val) {
+		if(this.get(key) === -1) {
+			if(this.capacity === this.map.size) {
+				for(let keyVal of this.map) {
+					this.map.delete(keyVal[0]);
+					break;
+				}
+			}
+		}
+		this.map.set(key,val);
+	}
+}
 
 /**
  * Your LRUCache object will be instantiated and called as such:
