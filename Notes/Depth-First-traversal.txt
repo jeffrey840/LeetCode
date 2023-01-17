@@ -1,0 +1,46 @@
+
+data stricture that keeps track of vertices that we have visited
+goes as far as it can down a given path, then backtarcks, unttiln it finds an
+unexplored path
+
+we want to find out all the nodes that are discoverable from the root node
+
+   a
+|    |
+ b   g
+|||  |
+cde  h
+  |  |
+  f  i
+
+storing in an array
+
+1.a is the starting point and it is visited
+2.next node is b, then its marked as visited,
+3.c is next node, no children, backtracked
+4.d, is next node, no children, backtracked
+5.e, next node, has children f, f has no children, so backtrack all the way to a
+6.g has children, h has children ,and i does not
+
+==========
+const dfs = function (start, target) {
+    console.log("Visiting Node " + start.value);
+    if (start.value === target) {
+        // We have found the goal node we we're searching for
+        console.log("Found the node we're looking for!");
+        return start;
+    }
+
+    // Recurse with all children
+    for (var i = 0; i < start.children.length; i++) {
+        var result = dfs(start.children[i], target);
+        if (result != null) {
+            // We've found the goal node while going down that child
+            return result;
+        }
+    }
+
+    // We've gone through all children and not found the goal node
+    console.log("Went through all children of " + start.value + ", returning to it's parent.");
+    return null;
+};

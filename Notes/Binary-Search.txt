@@ -1,0 +1,26 @@
+
+
+
+ex:
+const arr = ["a","b","c","d","e"];
+
+function findL (target,start,end) {
+
+#make base case if it is not found
+if(start>end) {return not found}
+
+#make middle index
+const middle = math.floor((start+end)/2);
+
+#check if the middle is equal to the target
+if (arr[middle] === target) { return found at ${middle} }
+
+# if middle is greater than target, search left
+if (arr[middle] > target) { return findL(target, middle, middle -1)}
+
+# if middle is less than target, search right
+if (arr[middle] < target) { return findL(target, middle + 1, end)}
+
+}
+
+
