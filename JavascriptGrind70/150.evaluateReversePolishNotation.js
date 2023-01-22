@@ -40,9 +40,71 @@
 // 	1 <= tokens.length <= 104
 // tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200].
 
+/*
+
+input will always be valid and inputs will always truncatinate towards zero
+
+finding an operator and then the operator will effect the previous 2 numbers or groups
+
+using a stack data structure
+
+token = [2,1,+,3,*]
+1.if it is a number push it into a "stack"
+
+2.when we get to an operator "pop" the last num that was in and store it in a variable num2, and the remaining number in num1
+
+|1|                                                 | |
+|2|  -> num1 = 2, num2 = 1 ,the  stack is now empty | |
+|_|                                                 |_|
+
+3.then take num1 and num2 and run it with the operant, and get a new value
+newNum  = num1 + num2
+
+4.then push newNum into the stack
+| |
+|3|
+|_|
+
+5.push the remaining numbers into the stack
+
+|3|
+|3|
+|_|
+
+6.the next string is an operand so repeat step 2.
+
+		num1 = 3, num2 = 3
+|3|
+|3|
+|_|
+
+7. in this case step 3 is repeated, 3*3 = 9, then 9 is pushed into stack
+
+8.the last value in the stack will be the value
+
+* */
+
 var evalRPN = function(tokens) {
 
+const stack = [];
 
-
-
+const operators = {
+	'+' : (num1,num2) => num1 + num2,
+	'-' : (num1,num2) => num1 - num2,
+	'*' : (num1,num2) => num1 * num2,
+	'/' : (num1,num2) => Math.trunc(num1/num2)
 };
+
+for(let token of tokens) {
+	if (operators[token]) {
+		let num2 = stack.pop();
+		let num1 = stack.pop();
+
+		stack.push(operators[token](num1,num2))
+	} else {
+		stack.push(parseInt(token))
+	}
+}
+return stack.pop();
+};
+
