@@ -37,38 +37,61 @@
 // Methods pop, top and getMin operations will always be called on non-empty stacks.
 // 	At most 3 * 104 calls will be made to push, pop, top, and getMin.
 
-var MinStack = function() {
 
-};
+/*
 
-/**
- * @param {number} val
- * @return {void}
- */
-MinStack.prototype.push = function(val) {
+contains 2 stacks
+push every item into one container and  compare if it is the minimum in the sequence
 
-};
+as you push into the stack make sure to push into the moi  stack
 
-/**
- * @return {void}
- */
-MinStack.prototype.pop = function() {
+input = [MinStack,push,getMin,push][[],[-2],[1],[2]]
 
-};
+|2|    |-2|   no other number is less than -2
+|1|    |-2|
+|-2|    |-2|
+| |    ||
+|_|    |_| <- keeps track of min
 
-/**
- * @return {number}
- */
-MinStack.prototype.top = function() {
+minStack =
+newMinStack =
 
-};
+* */
 
-/**
- * @return {number}
- */
-MinStack.prototype.getMin = function() {
+class MinStack  {
 
-};
+	constructor() {
+		this.stack = [];
+		this.minStack = [];
+	}
+
+	push(val) {
+		if(!this.stack.length) {
+			this.stack.push(val);
+			this.minStack.push(val);
+		} else {
+			this.stack.push(val);
+			this.minStack.push(Math.min(this.minStack[this.minStack.length-1 ],val))
+		}
+	}
+
+	pop() {
+		if(!this.stack.length) return null;
+		this.minStack.pop();
+		return this.stack.pop();
+	}
+
+	top() {
+		return this.stack[this.stack.length -1];
+	}
+
+	getMin() {
+		return this.minStack[this.minStack.length -1]
+	}
+}
+
+
+
 
 /**
  * Your MinStack object will be instantiated and called as such:
