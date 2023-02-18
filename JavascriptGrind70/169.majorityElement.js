@@ -42,3 +42,6 @@ var majorityElement = function(nums) {
 return max
 	// console.log(obj)
 };
+
+
+
