@@ -33,32 +33,57 @@
 // 	At most 3 * 104 calls in total will be made to insert, search, and startsWith.
 
 var Trie = function() {
-
+	this.root = {};
 };
 
-/**
- * @param {string} word
- * @return {void}
- */
 Trie.prototype.insert = function(word) {
+	// inserts the word into the trie
+	let node = this.root
 
+	for(let c of word) {
+		if(node[c] == null) node[c] = {};
+		node = node[c];
+	}
+	node.isWord = true;
 };
 
-/**
- * @param {string} word
- * @return {boolean}
- */
+Trie.prototype.traverse = function(word) {
+// returns true if its in the trie else false
+	let node = this.root
+
+	for(let c of word) {
+		node = node[c];
+		if(node == null) return null;
+	}
+	return node;
+};
+
 Trie.prototype.search = function(word) {
 
-};
+	let node =  this.traverse(word)
 
-/**
- * @param {string} prefix
- * @return {boolean}
- */
+	return  node !== null && node.isWord === true;
+}
+
+
 Trie.prototype.startsWith = function(prefix) {
+// Returns true if there is a previously inserted string
+// word that has the prefix prefix, and false otherwise.
 
+	let node = this.traverse(prefix);
+	return node !== null;
 };
+
+// example input
+//===============
+// ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+	// [[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+
+//example output
+//=============
+// [null, null, true, false, true, null, true]
+
+
 
 /**
  * Your Trie object will be instantiated and called as such:
