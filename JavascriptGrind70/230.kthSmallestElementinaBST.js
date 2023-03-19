@@ -24,10 +24,13 @@
 // Follow up: If the BST is modified often (i.e., we can do insert and delete operations) and you need to find the kth smallest frequently, how would you optimize?
 
 
+//use an inorder traversal method
+
+
 var kthSmallest = function(root, k) {
 
-	let arr = [];
-	inOrder(root,arr);
+	// let arr = [];
+	inOrder(root,arr);//this contains the in order traversal
 	return findKth(arr,k);
 };
 
