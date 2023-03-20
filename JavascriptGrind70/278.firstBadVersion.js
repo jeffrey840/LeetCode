@@ -21,9 +21,34 @@
 // Output: 1
 
 
+/**
+ * @param {function} isBadVersion()
+ * @return {function}
+ */
 var solution = function(isBadVersion) {
-
+	/**
+	 * @param {number} n Total number of versions
+	 * @return {number} The first bad version
+	 */
 	return function(n) {
+		// Initialize pointers to the first and last versions
+		let left = 1, right = n;
 
+		// Loop until we've narrowed down the search range to a single version
+		while (left < right) {
+			// Compute the middle version
+			const mid = Math.floor((left + right) / 2);
+			// Check if the middle version is bad
+			if (isBadVersion(mid)) {
+				// If it is, set the upper bound of the search range to the middle version
+				right = mid;
+			} else {
+				// Otherwise, set the lower bound of the search range to the next version
+				left = mid + 1;
+			}
+		}
+
+		// At this point, left and right should be pointing to the first bad version
+		return left;
 	};
 };
