@@ -23,4 +23,33 @@
 
 var floodFill = function(image, sr, sc, color) {
 
+	//Start with the pixel at sr, sc. This is the starting pixel for the flood fill.
+	//Store the color of the starting pixel in a variable originalColor.
+	let originalColor = image[sr][sc];
+
+	//If originalColor is equal to color, return the image as is because there's no need to make any changes.
+	if (originalColor === color) return image;
+
+	//Call the dfs function with the parameters image, sr, sc, originalColor, and color. This function will perform the DFS.
+	dfs(image, sr, sc, originalColor, color);
+	return image;
+};
+
+
+	//In the dfs function, check if the current pixel is within the bounds of the grid and if its color is equal to originalColor.
+var dfs = function(image, i, j, originalColor, color) {
+
+	//If either condition is not met, return.
+	if (i < 0 || i >= image.length || j < 0 || j >= image[0].length || image[i][j] !== originalColor) return;
+
+	//If both conditions are met, change the color of the current pixel to color.
+	image[i][j] = color;
+
+	//Make recursive calls to dfs for the up, down, left, and right pixels.
+	//
+	// Repeat steps for each pixel visited in the DFS.
+	dfs(image, i + 1, j, originalColor, color);
+	dfs(image, i - 1, j, originalColor, color);
+	dfs(image, i, j + 1, originalColor, color);
+	dfs(image, i, j - 1, originalColor, color);
 };
