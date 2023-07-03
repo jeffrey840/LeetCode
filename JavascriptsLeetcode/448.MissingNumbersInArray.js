@@ -17,9 +17,5 @@ function findDisappearedNumbers(nums) {
 		}
 	}
 
-
-
-
-
 	return result;
 }
