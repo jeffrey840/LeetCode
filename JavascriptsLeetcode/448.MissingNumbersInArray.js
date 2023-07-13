@@ -1,6 +1,5 @@
 function findDisappearedNumbers(nums) {
 	const result = [];
-
 	// Mark the presence of each number by negating the value at its corresponding index
 	for (let i = 0; i < nums.length; i++) {
 		const index = Math.abs(nums[i]) - 1;
