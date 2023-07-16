@@ -7,6 +7,7 @@ function findDisappearedNumbers(nums) {
 			nums[index] = -nums[index];
 		}
 	}
+
 	// Find the positive values (indices) which indicate missing numbers
 	for (let i = 0; i < nums.length; i++) {
 		if (nums[i] > 0) {
