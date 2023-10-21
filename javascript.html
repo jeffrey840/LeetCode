@@ -4,14 +4,51 @@
 	<meta charset="UTF-8">
 	<title>LeetCode</title>
 
-<!--Assign javascript on line 8 -->
 
-<!---->
 
 </head>
 <body>
 
-<script src="JavascriptsLeetcode/033.searchinRotatedSortedArray.js">
+
+
+<script>
+
+
+	// Get all the desired divs
+	let termDivs = document.querySelectorAll('.SetPageTerms-term');
+
+	let resultHTML = "";
+	let counter = 1;  // Start the counter at 1
+
+	// Loop through each div
+	termDivs.forEach(termDiv => {
+		// Extract word and definition
+		let word = termDiv.querySelector('.SetPageTerm-wordText .TermText').textContent;
+		let definition = termDiv.querySelector('.SetPageTerm-definitionText .TermText').textContent;
+
+		// Append to the result in desired format
+		resultHTML += `
+<p><strong>${counter}. </strong></p>   <!-- Include the counter here -->
+<p>Word: ${word}</p>
+<p>Definition: ${definition}</p>
+<hr/>
+`;
+
+		counter++;   // Increment the counter for the next word
+
+		// Remove the div with class "a1hp6gla" from this termDiv
+		let removeDiv = termDiv.querySelector('.a1hp6gla');
+		if (removeDiv) removeDiv.remove();
+	});
+
+	console.log(resultHTML)
+	// Clear the body content and show only desired content
+	document.body.innerHTML = resultHTML;
+
+
+
+
+
 </script>
 </body>
 </html>
