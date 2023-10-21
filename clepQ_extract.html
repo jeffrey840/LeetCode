@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Extract Question and Answers</title>
+</head>
+<body>
+<!-- Your existing HTML content goes here -->
+<div id="seq_contents_0" aria-labelledby="tab_0" aria-hidden="true" class="seq_contents tex2jax_ignore asciimath2jax_ignore">
+	<!-- ... -->
+</div>
+
+<!-- Placeholder to display the extracted content -->
+<div id="extractedContent">
+	<h2>Extracted Question:</h2>
+	<div id="question"></div>
+	<h2>Extracted Answers:</h2>
+	<ul id="answers"></ul>
+</div>
+
+<script>
+	function extractQuestionAndAnswers() {
+		// Extract the question
+		const questionElem = document.querySelector("#seq_contents_0 .problem p");
+		const question = questionElem ? questionElem.innerHTML : "Question not found";
+
+		// Extract the answers
+		const answerElems = document.querySelectorAll("#seq_contents_0 .choicegroup .field");
+		const answers = [];
+		answerElems.forEach(elem => {
+			const answer = elem.textContent.trim();
+			if (answer) answers.push(answer);
+		});
+
+		// Display the question
+		document.getElementById("question").innerHTML = question;
+
+		// Display the answers
+		const answersList = document.getElementById("answers");
+		answersList.innerHTML = '';
+		answers.forEach(answer => {
+			const listItem = document.createElement('li');
+			listItem.textContent = answer;
+			answersList.appendChild(listItem);
+		});
+	}
+
+	// Call the function on page load
+	window.onload = extractQuestionAndAnswers;
+</script>
+</body>
+</html>
