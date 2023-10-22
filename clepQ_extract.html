@@ -1,68 +1,982 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Extract Questions and Answers</title>
 </head>
-
 <body>
-
-
-
-
-
-<!-- Display extracted question and answers here -->
-
+<div id="output"></div>
 
 <script>
+	const text = `
 
-	function organizeData(text) {
-		// Split the content by the numbered headings
-		const sections = text.split(/\n\d+\.\n/).filter(Boolean);
-		const organizedData = [];
 
-		sections.forEach(section => {
-			// Extract Word and Passage
-			const wordMatch = section.match(/Word: refer to the passage below\."(.*?)"/s);
-			const word = wordMatch ? wordMatch[1] : null;
 
-			// Extract questions and answers
-			const questions = [];
-			const questionMatches = section.matchAll(/(\d+)\. (.*?)(?=\(\w+\))/g);
+CLEP
+Western Civilization I
+1
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+Time—120 Minutes
+120 Questions
+For each question below, choose the best answer from the
+choices given.
+1. The earliest human-like creatures, hominids, existed in Africa as early as
+ (A) 25,000 years ago
+ (B) 50,000 years ago
+ (C) 1 million years ago
+ (D) 2 million years ago
+ (E) 3 to 4 million years ago
+2. The Sumerians
+ (A) defeated the Hittites in 2600 BCE
+ (B) were plagued by incessant warfare between their many city-states
+ (C) had a complicated religion with a sophisticated belief in life after death
+ (D) were warriors who instituted totalitarian government
+ (E) were divine-right monotheists
+3. Sumerian writing
+ (A) was originally pictographic but became cuneiform
+ (B) could only be used for simple record keeping
+ (C) could not express educational concepts
+ (D) could not be used for epic poetry
+ (E) was used by a majority of Sumerians
+4. The Code of Hammurabi
+ (A) helped keep Babylonian society relatively equal
+ (B) was a harsh law code that afforded some justice for all social classes
+ (C) had little to do with criminal laws as such
+ (D) does not provide us with the value system in Mesopotamia
+ (E) was written first in hieroglyphics
+CLEP Western Civilization I
+2
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+5.
+The technical term for the structure on which Hammurabi’s Code was written is
+ (A) pillar
+ (B) column
+ (C) post
+ (D) mast
+ (E) stela
+6. The Hyksos were
+ (A) a Semitic people who infiltrated Egypt in the seventeenth century BCE
+ (B) Indo-European peoples who were recruited into the Egyptian military
+ (C) priests/astronomers in Egypt during the Old Kingdom
+ (D) victorious over the Egyptians in the ninth century BCE
+ (E) Egyptian monotheists
+7. Many scholars today
+ (A) believe the Hebrew Bible is a completely accurate historical record
+ (B) contend that the Hebrew Bible was originally written in the fifth century CE
+ (C) doubt that the early books of the Hebrew Bible reflect the true history of the Israelites
+ (D) argue that the Hebrew Bible was first written in Greek
+ (E) believe that the Hebrew Bible was originally written in an Indo-European language
+8. All of the following are true of the Hebrew conception of God EXCEPT
+ (A) he was the creator, but not an inherent part, of nature
+ (B) all peoples of the world were subject to him
+ (C) that he would punish those not following his will
+ (D) there was no room for personal relationships with him, as his word was law
+ (E) he was a god of mercy and love
+CLEP Western Civilization I
+3
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+9. Amenhotep IV is BEST known for
+ (A) the temporary installation of monotheism in Egyptian culture
+ (B) expelling the Hyksos and leading Egypt along an imperialistic path
+ (C) increasing the power of the Amon-Re priesthood
+ (D) combating the invasion of the Sea Peoples
+ (E) building the pyramids during the period of the Old Kingdom
+10.
+As is apparent from the artistic style, this example of Egyptian art is from the
+ (A) Old Kingdom, during the era of the pyramids
+ (B) Middle Kingdom era, as evidenced by the image of the sun
+ (C) Hyksos period because the figures portrayed are obviously not Egyptian
+ (D) New Kingdom during the reign of Akhenaten
+ (E) first millennium BCE and shows the influence of Assyrian artistic motifs
+11. At its height, the Assyrian Empire was ruled by
+ (A) the superintendent of the palace
+ (B) the priesthood of the chief deity Ashur
+ (C) a king whose power was absolute
+ (D) a system of independent governorships
+ (E) a representative body dominated by the landed aristocracy
+12. Cambyses’ GREATEST achievement as king of the Persian Empire was
+ (A) calming the hatred of subject peoples caused by Cyrus’s intolerant policies
+ (B) building a canal to link the Red Sea and the Mediterranean Sea
+ (C) bringing Egypt under Persian control
+ (D) causing a revolt of Ionian Greek cities in 499 BCE
+ (E) defeating the Greeks at the Battle of Thermopylae
+CLEP Western Civilization I
+4
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+13. The Persian Empire’s system of satrapies allowed for
+ (A) subject peoples to play a dominant role in civil administration
+ (B) a sensible system of collecting tribute based on an area’s productive capacity
+ (C) noble offices to be filled by election rather than hereditary means
+ (D) widespread corruption by the satraps, who acted without the king’s knowledge
+ (E) direct military rule of the empire
+14. The decline of the Hittites and Egyptians around 1200 BCE
+ (A) brought an end to Near Eastern civilization
+ (B) created a power vacuum that allowed several small states to emerge and temporarily flourish
+ (C) allowed the Persians under Cyrus the Great to immediately establish an empire
+ (D) was caused by Assyrian conquest
+ (E) allowed the Persians to immediately assume power in the Middle East
+15. The chief center of Minoan Crete was
+ (A) Athens
+ (B) Sparta
+ (C) Illium
+ (D) Thebes
+ (E) Knossus
+16. During the migrations of the Greek Dark Age, many Ionians
+ (A) occupied northern Greece
+ (B) took control of the Peloponnesus
+ (C) crossed the Aegean Sea to settle in Asia Minor
+ (D) moved to Crete
+ (E) occupied southern Italy and the island of Sicily
+17. Which of the following statements about Greece from c. 750 to c. 500 BCE is correct?
+ (A) It was a period of social cohesion and great Greek empires.
+ (B) The Greeks’ colonization efforts in the Aegean and Black Seas came to an end.
+ (C) The polis evolved into the central institution in Greek life.
+ (D) It was a period of incessant warfare.
+ (E) It is known as the era of the Greek Dark Ages.
+CLEP Western Civilization I
+5
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+18. Tyranny in the Greek polis arose as
+ (A) the people became complacent due to the egalitarian nature of Greek society
+ (B) the response to the cry for strong leadership from the established aristocratic oligarchies
+ (C) the religious beliefs of the Greeks collapsed
+ (D) a consequence of aristocratic power and a widening gulf between the rich and the poor
+ (E) a response to too much democratic chaos and anarchy
+19.
+The statue of the young male is from
+ (A) Egypt during the era of Akhenaten
+ (B) Minoan Crete
+ (C) Archaic Greece
+ (D) Classical Greece
+ (E) Hellenistic Alexandria
+20. The Lycurgan reforms resulted in
+ (A) the establishment of a permanent military state in Sparta
+ (B) more constitutional rights for Spartans
+ (C) outlawing religion in Sparta
+ (D) revolt among Spartan slaves
+ (E) the abolishment of slavery in Sparta
+CLEP Western Civilization I
+6
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+21. Typical of Greek culture in the Archaic Age was
+ (A) Homeric epic poetry
+ (B) the symposium, the sophisticated drinking party uniting all ranks of society
+ (C) lyric poetry as found in the works of Sappho
+ (D) the poetry of Hesiod emphasizing the superiority of the aristocratic class
+ (E) the dialogues of Plato
+22. The Peloponnesian War resulted in
+ (A) the consolidation of Pericles’ power
+ (B) the unification of the Greek city-states under Thebes
+ (C) a great Greek victory over the Persians
+ (D) Athenian control of Sicily
+ (E) the defeat of Athens and the collapse of its empire
+23. The Greek historian Thucydides differed from Herodotus in that the former
+ (A) was unconcerned with spiritual forces as a factor in history
+ (B) exhibited a critical attitude toward his sources but Herodotus did not
+ (C) devoted much of his writing to economic history
+ (D) was unconcerned with teaching lessons based on history
+ (E) wrote about the Persian War, while Herodotus was the historian of the Peloponnesian War
+24. Early Greek philosophy attempted to
+ (A) eliminate divinity from the world
+ (B) explain the universe on the basis of unifying principles
+ (C) undermine traditional Greek society
+ (D) turn all Greeks away from the world and toward contemplation
+ (E) deny the reality of physical matter
+25. “The unexamined life is not worth living” is MOST closely associated with the philosophy of
+ (A) Pericles
+ (B) Aristotle
+ (C) Plato
+ (D) Pythagoras
+ (E) Socrates
+CLEP Western Civilization I
+7
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+26. Alexander the Great’s conquests in Asia occurred despite
+ (A) his lack of military expertise prior to his father’s assassination
+ (B) the Persian king Darius III’s refusal to make any peace settlements
+ (C) the lack of a strong cavalry and inability to capture Egypt
+ (D) his eventual difficulties in convincing his troops to fight so far from home
+ (E) his lack of any Greek troops or support
+27. The Hellenistic dynasty that lasted the longest was the
+ (A) Antigonid
+ (B) Alexandrine
+ (C) Seleucid
+ (D) Attalid
+ (E) Ptolemaic
+28. What was the GREATEST difference between education during the Hellenistic and Classical periods?
+ (A) Hellenistic education became the responsibility of city governments rather than private
+schools.
+ (B) Poor and middle-class Greeks alike were allowed to go to Hellenistic schools.
+ (C) The core curriculum became music and art rather than history, rhetoric, and philosophy.
+ (D) An elective system was introduced that allowed students to choose their preferred course of
+study.
+ (E) Education in the Hellenistic era was taught in the international language of Aramaic.
+29. The MOST famous achievement of the Alexandrian scholar Euclid was
+ (A) systematizing the study of geometry
+ (B) calculating the earth’s circumference
+ (C) formulating and synthesizing the predominant elements in military science
+ (D) transferring the capital of Hellenistic science from Athens to Alexandria
+ (E) positing a heliocentric universe
 
-			for (const match of questionMatches) {
-				questions.push({
-					number: match[1],
-					text: match[2]
-				});
-			}
+CLEP Western Civilization I
+8
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+30.
+The sculpture of Laocoon and His Sons and the Old Market Woman are from
+ (A) the Archaic Age of Greece
+ (B) Classical Greece
+ (C) the Hellenistic world
+ (D) the late Etruscan era
+ (E) the early Roman Republic
+31. The widespread popularity of Stoicism and Epicureanism in the Hellenistic world
+ (A) demonstrated the renewed strength and belief in the polis
+ (B) occurred despite the continued growth of traditional Greek religious practices
+ (C) suggested a new openness to thoughts of universality
+ (D) amounted to proof of a growing homogenization of Greek thought
+ (E) showed the rejection of Athens as a philosophical center
 
-			const definitionMatch = section.match(/Definition: (.*)/);
-			const definitions = definitionMatch ? definitionMatch[1].split('.') : [];
+CLEP Western Civilization I
+9
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+32. How did Greek religion change during the Hellenistic period?
+ (A) It changed to various kinds of emperor worship.
+ (B) Fertility gods took the place of the classical Greek gods.
+ (C) The Greeks became very receptive to the eastern religious mystery cults.
+ (D) The Greeks reverted back to a form of animism.
+ (E) There was no change from the classical period.
+33. The Jews of the Hellenistic cities
+ (A) were never fully integrated into Hellenistic culture
+ (B) had no political and judicial rights, unlike other urban residents
+ (C) were denied citizenship despite all their attempts
+ (D) were harshly treated by the Seleucids after a failed rebellion in Jerusalem in 164 BCE
+ (E) generally abandoned Judaism in favor of one or another of the many mystery religions
+34. For the Romans, Italy’s geography
+ (A) provided little productive land for agriculture
+ (B) divided the peninsula into small isolated communities
+ (C) made Rome a natural crossroads and an area easy to defend
+ (D) made the conquering of the Mediterranean a difficult task
+ (E) had no impact upon the political unification of the Italian peninsula
+35. Rome’s conquest of the Italian peninsula by 264 BCE can be attributed to
+ (A) superb diplomacy
+ (B) a direct policy of expansion
+ (C) the use of heavy cavalry
+ (D) Rome’s feeling of security
+ (E) the ethnic inferiority of Rome’s neighbors
+36. In defeating the Greek colonies in Italy, Rome
+ (A) employed mercenary armies from Persia and Asia Minor
+ (B) faced large, well-trained armies from the Greek colonies
+ (C) gained a sense of security and demobilized its military
+ (D) had to defeat the mercenaries under King Pyrrhus, sent against them by the Greeks
+ (E) used biological warfare through plague-infected items of commerce and trade
+CLEP Western Civilization I
+10
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+37. The immediate cause of the First Punic War was
+ (A) Carthaginian treachery in the Pyrrhic Wars
+ (B) Roman colonization in North Africa
+ (C) Carthaginian expansion along the Spanish and Italian coasts
+ (D) Rome sending an army to Sicily
+ (E) a Roman invasion of Carthaginian Spain
+38. The result of the Third Punic War was
+ (A) an alliance between Rome and Carthage
+ (B) the complete destruction and subjugation of Carthage
+ (C) the loss of Rome’s mastery of the Mediterranean Sea
+ (D) the sacking of Rome
+ (E) the restoration of Carthage’s empire in Spain
+39. Marius initiated which of the following military innovations that became a threat to the Roman Republic?
+ (A) Employing Greek mercenaries
+ (B) Recruiting destitute volunteers who swore an oath of allegiance only to him
+ (C) Robbing the state treasury’s tax revenues to buy weapons
+ (D) Forming a triumvirate with Pompey and Julius Caesar
+ (E) All of the above
+40. Which Roman writer is MOST closely associated with the development of a new poetry at the end of the
+Roman Republic?
+ (A) Sallust
+ (B) Cicero
+ (C) Virgil
+ (D) Plutarch
+ (E) Catullus
+41. The Roman Praetorian Guard was
+ (A) made up of elite troops given the task of protecting the emperor
+ (B) a mobile unit meant to patrol the boundaries of the empire
+ (C) often used to train the gladiators
+ (D) a cavalry unit used to spearhead military offensives
+ (E) responsible for the conquered Gaul under the leadership of Julius Caesar
+CLEP Western Civilization I
+11
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+42. Among Augustus’ key innovations in Roman provincial rule was his
+ (A) abandonment of North Africa because of the economic drain on imperial finances
+ (B) division of provinces into those ruled directly by the princeps and those administered by the
+Senate
+ (C) use of military governors alone
+ (D) complete revision of provincial tax policies
+ (E) his enforcement of the imperial cult and the prohibition of all other religious practices
+43. Livy was BEST known in the Augustan Age for his
+ (A) Aeneid
+ (B) Metamophoses
+ (C) Satires
+ (D) Meditations
+ (E) History of Rome
+44. Which of the following trends developed during the reigns of the Julio-Claudian emperors?
+ (A) Emperors increasingly took responsibilities of ruling the empire away from the old Senate.
+ (B) All efforts to achieve bureaucratic organization of imperial government eventually failed.
+ (C) Emperors turned over more and more of the daily affairs of government to the Senate.
+ (D) The power of imperial military forces stationed in Rome declined.
+ (E) None of the Julio-Claudians were competent rulers.
+45. The prolific “silver age” writer Seneca
+ (A) rejected the Stoic ideal of political service for a carefree life of opulence
+ (B) satirized Rome’s new rich class in his Satyricon
+ (C) composed philosophical letters on the theme of Stoicism
+ (D) died in a state of abject poverty despite remaining close friends with Nero
+ (E) was the first major intellectual figure of Rome to convert to Christianity
+46. One of the MOST famous jurists of the Early Empire responsible for completing the basic natural rights
+principles vital to the Western world was
+ (A) Galen
+ (B) Alcon
+ (C) Seneca
+ (D) Acilius
+ (E) Ulpian
+CLEP Western Civilization I
+12
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+47. Paul of Tarsus
+ (A) founded the Christian church at Rome
+ (B) preached Christianity only to the non-Jews
+ (C) believed Christianity should be preached to Jews and non-Jews
+ (D) was unable to put his beliefs into writing before his execution
+ (E) became the first pope
+48. The Roman Empire’s persecution of Christians in the first two centuries after Christ’s death
+ (A) began during the reign of Tiberius
+ (B) was sporadic and local
+ (C) forced most Christians into participating in Roman public, religious festivals
+ (D) was known as the Agape
+ (E) was increased by the emperor Constantine
+49. The political, economic, and social policies of the restored empire under Diocletian and Constantine
+ (A) meant the destruction of the civil and military bureaucracies
+ (B) renewed the support of the Roman peasants and lower classes for the Empire
+ (C) led to the economic rejuvenation of the Empire
+ (D) were based on coercion and the loss of individual freedom
+ (E) returned political power and authority to the senate
+CLEP Western Civilization I
+13
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+50.
+Which emperor used awe-inspiring statues, such as this 8 foot, 6 inch massive head, throughout the
+Roman Empire in an attempt to unite the population under his leadership?
+ (A) Julius Caesar
+ (B) Augustus Caesar
+ (C) Mark Antony
+ (D) Marcus Aurelius
+ (E) Constantine
+51. Which Roman emperor’s overthrow by barbarians marked the end of the Roman Empire in 476 CE?
+ (A) Valens
+ (B) Romulus Augustulus
+ (C) Odovacer
+ (D) Theodosius
+ (E) Eugenius
+52. The heresy of Arianism
+ (A) questioned the divinity of Jesus
+ (B) denied the existence of God the Father
+ (C) denied the existence of the Holy Spirit
+ (D) reverted to Roman polytheistic religious beliefs
+ (E) was accepted as true doctrine by the church at the Council of Nicaea in 325
+CLEP Western Civilization I
+14
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+53. Benedictine monasticism was NOT characterized by
+ (A) asceticism and extremism
+ (B) an ideal of moderation
+ (C) the communal life
+ (D) isolated, self-sustaining communities
+ (E) rules and vows
+54. Neoplatonism was
+ (A) a Christian movement to reject all Greek philosophy
+ (B) a new heresy condemned by the church
+ (C) an effort to establish Latin language schools attached to Christian churches
+ (D) a Christian revival of Platonic ideas using Greek language and thought to enrich Christian
+philosophy
+ (E) a total rejection of Christianity and a return to Plato’s pagan philosophy
+55. The Frankish palace official Charles Martel successfully defended the civilization of the new western
+European kingdoms in 732 by
+ (A) destroying the Visigoths
+ (B) pushing the Burgundians back across the Rhone River
+ (C) defeating Moorish Muslim armies at the battle of Tours
+ (D) sacking Rome
+ (E) making himself the new Roman Emperor in the west
+56. Justinian’s MOST important contribution to Western civilization was his
+ (A) opposition to the Arian heresy
+ (B) reconquest of western Europe
+ (C) preventing the migration of eastern peoples to the west
+ (D) spreading the use of Latin
+ (E) codification of Roman law
+CLEP Western Civilization I
+15
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+57.
+The mosaic pictured is _______ and portrays the figure of ________.
+ (A) Persian, Cyrus the Great
+ (B) Greek, Pericles
+ (C) Roman, Constantine
+ (D) Byzantine, Justinian
+ (E) Carolingian, Charlemagne
+58. The staple food in the Carolingian diet was
+ (A) bread
+ (B) mutton
+ (C) beef
+ (D) pork
+ (E) corn
+59. The division of Europe into three kingdoms after the death of Louis the Pious led to
+ (A) the capture of the eastern German lands by Muslim forces
+ (B) an incessant struggle between Louis the German, Charles the Bald, and their heirs over
+disputed territories
+ (C) two centuries of relative calm
+ (D) the eventual emergence of Lothair as the next ruler of a united Europe
+ (E) the reuniting of east and west by Justinian the Great
+CLEP Western Civilization I
+16
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+60.
+The ship in the illustration is
+ (A) a Greek trireme
+ (B) a Chinese junk
+ (C) an Arab merchantman
+ (D) a Viking longship
+ (E) a Venetian barge-gondola
+61. Under the feudalism of the Early Middle Ages
+ (A) the major obligation of a vassal to his lord was to provide military service
+ (B) a vassal was not required to provide legal assistance at his lord’s court
+ (C) a lord had no formal responsibilities toward his vassals
+ (D) there was no outlet for the breaking of the bond between lord and vassal
+ (E) serfs fought for their lords, but only as foot-soldiers
+62. The English king who helped establish a unified Anglo-Saxon monarchy by defeating the Danish Vikings
+was
+ (A) Hugh Capet
+ (B) Alfred the Great
+ (C) Edgar of Anglia
+ (D) Conrad of Franconia
+ (E) Edward the Confessor
+63. The capital city of the Umayyad Caliphate and center of an Islamic empire was
+ (A) Jerusalem
+ (B) Cairo
+ (C) Damascus
+ (D) Mecca
+ (E) Medina
+CLEP Western Civilization I
+17
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+64. The dramatic increases in European population between 1000 and 1300
+ (A) occurred despite detrimental climatic patterns
+ (B) especially benefited women of child-bearing age
+ (C) were primarily due to increased security and increased agricultural production
+ (D) led to populations with many more women than men due to constant warfare
+ (E) instigated emigration to the New World
+65. Marriages among the aristocracy of the High Middle Ages
+ (A) were more frequently motivated by the love brides and grooms felt for one another
+ (B) still included violent blood rituals of betrothal dating back to pagan times
+ (C) usually occurred when both bride and groom were in their teens
+ (D) were expected to establish political alliances between families and increase their wealth
+ (E) were condemned by the church as being motivated by material rather than spiritual concerns
+66. The revival of long-distance trade in the eleventh and twelfth centuries was due to all of the following
+EXCEPT
+ (A) trade links with eastern Mediterranean cities forged by Italian port towns during the Crusades
+ (B) the emergence of Flanders as a great center of cloth production
+ (C) the demise of local trade throughout Europe’s rural world
+ (D) the establishment of trading fairs by local northern European nobles
+ (E) the revival of urban society in northern Italy
+67. The first university to be founded in Europe appeared in
+ (A) Bologna
+ (B) Paris
+ (C) Oxford
+ (D) Frankfurt
+ (E) Rome
+68. The renaissance of the twelfth century was primarily caused by
+ (A) the university movement of the previous century
+ (B) circulation in the West of many ancient philosophical and scientific works
+ (C) the elaborate and dialectical writings of St. Thomas Aquinas
+ (D) the generous financial support of scholars by new European monarchs
+ (E) the paintings and sculptures of Michelangelo, da Vinci, and Raphael
+CLEP Western Civilization I
+18
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+69. The Song of Roland is one of the finest examples of
+ (A) the medieval chanson de geste
+ (B) twelfth-century courtly romance
+ (C) the Arthurian legend
+ (D) Latin religious verse
+ (E) the love poetry of the troubadours
+70. William of Normandy’s survey of his new royal possessions in England was recorded in
+ (A) the king’s royal pipe rolls
+ (B) Magna Carta
+ (C) Bede’s Ecclesiastical History
+ (D) the diary of his son, Henry I
+ (E) his Doomsday book
+71. Gothic cathedrals seem to soar upward as light and airy constructions due to all of the following
+innovations EXCEPT
+ (A) ribbed vaults
+ (B) flying buttresses
+ (C) thin walls pierced by huge stained glass windows
+ (D) barrel vaults and massive pillars and walls
+ (E) pointed arches
+CLEP Western Civilization I
+19
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+72.
+The stained-glass window in the illustration is characteristic of
+ (A) Islamic architecture
+ (B) Carolingian architecture
+ (C) Romanesque architecture
+ (D) Gothic architecture
+ (E) Renaissance architecture
+73. When the rule of the Capetians began at the end of the tenth century,
+ (A) France was the most powerful country in Europe
+ (B) the French king only controlled the area known as the Ile-de-France
+ (C) the French had just defeated the English in the Hundred Years’ War
+ (D) Bordeaux was the French capital
+ (E) the Normans conquered England
+74. Pope Gregory VII
+ (A) claimed that popes had the right to depose emperors
+ (B) stated that popes should not be involved in the everyday activities of the church
+ (C) increased the Church’s missionary activities to China
+ (D) collected new taxes to finance building programs
+ (E) begged forgiveness from the Holy Roman Emperor, Henry IV, at Canossa
+75. The Islamic world in the mid-eleventh century was unified and dominated by the
+ (A) Fatimids
+ (B) Ottomans
+ (C) Berbers
+ (D) Abbasids
+ (E) Seljuks
+CLEP Western Civilization I
+20
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+76. All of the following were aspects of the Fourth Crusade EXCEPT
+ (A) the Venetian use of Christian forces to attack their economic rivals
+ (B) the sack of Constantinople by Christian crusaders
+ (C) the restoration of the Byzantine Empire as a great Mediterranean power
+ (D) the establishment of the Latin Empire of Constantinople
+ (E) the failure of the crusaders to get to the Holy Land and the city of Jerusalem
+77. The devastation of the great plague in the fourteenth century led to
+ (A) the perception of life as something cheap and passing
+ (B) a decrease in crime due to an increase in religious piety
+ (C) an increase in the number of clergy
+ (D) a rise in the urban population but a decrease in the rural population
+ (E) a reduction in the persecution of religious minorities
+78. The European aristocracy responded to the adversity of the great plague by
+ (A) seeking to lower wages, especially for farm laborers
+ (B) producing only the most basic foodstuffs, such as grain
+ (C) petitioning kings to order the relocation of laborers
+ (D) forming agricultural cooperatives linking landowners, laborers, and city consumers
+ (E) becoming merchants and artisans
+79. Joan of Arc
+ (A) helped defeat the British at the Battle of Agincourt
+ (B) liberated Orleans and the Loire Valley from English control
+ (C) saw her task accomplished when Henry V was crowned king of France in 1429
+ (D) confessed to the charges of heresy but recanted and was exiled to Germany
+ (E) became the patron saint of Spain
+80. England under the reign of Edward III witnessed
+ (A) the temporary demise of Parliament
+ (B) the House of Commons dominating the House of Lords in Parliament
+ (C) the defeat of Richard II in the War of the Roses
+ (D) the crown’s acceptance of Parliament’s right to approve royal taxation
+ (E) England’s defeat at the Battle of Crecy in 1346
+CLEP Western Civilization I
+21
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+81. The Italian condottieri were
+ (A) Italian political leaders supporting the pope
+ (B) leaders of mercenary bands in cities occasionally ruling as military dictators
+ (C) Italian merchants working in northern Europe
+ (D) reformers within the Catholic Church
+ (E) humanist scholars and experts in ancient late and Greek languages
+82. One overall result of the Great Schism was to
+ (A) put an end to the Church’s previous financial abuses
+ (B) introduce doctrinal uncertainty into the lives of Christians
+ (C) rejuvenate Christianity as it had been on the decline throughout Europe
+ (D) end the abuse of pluralism
+ (E) condemn humanism and Renaissance excesses
+83. What was Boccaccio’s MOST famous work?
+ (A) The Divine Comedy
+ (B) The Decameron
+ (C) The Prince
+ (D) Spiritual Exercises
+ (E) Canterbury Tales
+84. The word “Renaissance” means
+ (A) humanism
+ (B) new world
+ (C) maturation
+ (D) escape
+ (E) rebirth
+CLEP Western Civilization I
+22
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+85.
+The painting in the illustration is by the early Renaissance artist
+ (A) Michelangelo
+ (B) Leonardo da Vinci
+ (C) Raphael
+ (D) Donatello
+ (E) Giotto
+86. The cultural center of the European Renaissance was
+ (A) London
+ (B) Florence
+ (C) Paris
+ (D) Rome
+ (E) Geneva
+87. Banquets during the Renaissance
+ (A) expressed the simplicity of the life idealized in courtly society
+ (B) were not held on holy days and on such celebrations as weddings
+ (C) were used to express the wealth and power of aristocratic families
+ (D) were banned by the papacy
+ (E) were exclusively a rural phenomenon
+88. Marriages in Renaissance Italy were
+ (A) based on love and mutual affection
+ (B) easy to dissolve or annul
+ (C) an economic necessity of life involving complicated family negotiations
+ (D) often worked out hastily with little thought
+ (E) exclusively secular affairs, with no religious or church involvement
+CLEP Western Civilization I
+23
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+89. By the fifteenth century, Italy was
+ (A) a centralized state
+ (B) dominated exclusively by the Papal States
+ (C) ruled by France
+ (D) the foremost European power
+ (E) dominated by five major regional independent powers
+90. Machiavelli’s ideas as expressed in The Prince achieve a model for a
+ (A) republican state in Italy
+ (B) new attitude of moral responsibility among politicians
+ (C) modern secular concept of power politics
+ (D) deeply religious conception of the sanctity of the state
+ (E) defense of divine right monarchy
+91. Italian artists in the fifteenth century began to
+ (A) ignore nature and paint for expression
+ (B) experiment in areas of perspective
+ (C) copy the works of previous artists
+ (D) move away from the study of anatomical structure
+ (E) replicate medieval art but using softer and milder colors
+92.
+The painting of the Creation of Adam is found in
+ (A) Florence’s Duomo
+ (B) Milan’s Cathedral
+ (C) the Papal Library
+ (D) the Sistine Chapel
+ (E) Florence’s Baptistry
+CLEP Western Civilization I
+24
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+93. The Habsburg dynasty ruled in
+ (A) Poland
+ (B) Italy
+ (C) France
+ (D) Russia
+ (E) the Holy Roman Empire
+94. The Renaissance papacy
+ (A) was exemplified by the Spartan existence of Leo X
+ (B) saw popes build dynasties over several generations to maintain power
+ (C) was little concerned with war and politics, as shown by Julius II
+ (D) was often seen as debauched and corrupt, especially under a pope like Alexander VI
+ (E) restored the simplicity and purity of the early Church
+95. Northern European humanists studiously learned Greek expressly to
+ (A) better understand the pagan culture of ancient Greece
+ (B) read the New Testament in its original Greek version
+ (C) avoid use of lowly vernacular languages
+ (D) outshine southern civic humanist competitors in public debate
+ (E) communicate with their contemporaries in Greece
+96. According to Luther, “justification” is
+ (A) how we explain our acts to God through prayer
+ (B) how the faithful must demand proofs of their pastors’ intelligence and educational
+qualifications (C) the act by which a person is made deserving of salvation
+ (D) how Christians must demand that politicians live up to the rules of moral behavior set down
+in the Bible (E) the explanation of the ways of God to man
+The end of answer choice D is missing the words "in the Bible"
+97. Concerning the sacraments of the Catholic Church, Luther
+ (A) accepted all seven
+ (B) rejected all of them except baptism and communion, or the Lord’s Supper
+ (C) claimed marriage as the only true sacrament
+ (D) eliminated extreme unction
+ (E) did not believe in any of the sacraments
+CLEP Western Civilization I
+25
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+98. Millenarianism is the belief that
+ (A) all Christians go to heaven
+ (B) all priests are impious
+ (C) the end of the world is imminent
+ (D) private property among Christians is immoral
+ (E) the world is symbolically recreated at the beginning of each millennium
+99. England’s break with the Roman Church became official with the passage of the
+ (A) Act of Supremacy
+ (B) Six Articles
+ (C) Act of Toleration
+ (D) Act of Succession
+ (E) Act of Revocation
+100.Which of the following is among the chief characteristics of John Calvin’s reform movement?
+ (A) Calvin’s acceptance of “justification by faith alone”
+ (B) Predestination and the absolute sovereignty of God
+ (C) The belief that humans must obey secular authorities
+ (D) A belief in congregational church covenant
+ (E) A free will in gaining access to salvation and into heaven
+101.The Reformation successfully abolished all of the following from the lives of Europe’s Protestant
+community EXCEPT for
+ (A) indulgences
+ (B) the celebrations of special religious holy days
+ (C) taverns
+ (D) clerical celibacy
+ (E) monasteries and nunneries
+102. The Council of Trent
+ (A) compromised with the Protestants on the doctrine of Justification by Faith
+ (B) agreed with most Protestants that there were only two sacraments
+ (C) asserted the importance of doctrine over ritual
+ (D) reaffirmed traditional Catholic beliefs against the Reformation
+ (E) agreed that Europe’s secular rulers could determine the religion of their subjects
+CLEP Western Civilization I
+26
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+103. The Edict of Nantes did all of the following EXCEPT
+ (A) acknowledge that Catholicism was the official religion in France
+ (B) expel the Huguenots from France
+ (C) recognize the rights of the Protestant minority
+ (D) provide a political solution
+ (E) recognize the principle of religious toleration
+104.
+The painting illustrates the
+ (A) massacre of the people of the Jerusalem by the crusaders of the First Crusade in 1099
+ (B) flagellants beating and whipping each other to atone for their sins during the Black Death of
+ (C) looting and mayhem that occurred in London 1347 during the Peasants’ Revolt in England in 1381
+ (D) Saint Bartholomew’s Day Massacre in 1572 that saw the murder of 3,000 Huguenots
+ (E) fall of Constantinople to the Ottoman Turks in 1453
+"1347" is missing from the end of answer choice B
+105. When he began to envision his voyage across the Atlantic, Columbus had a copy of
+ (A) The Travels of John Mandeville
+ (B) Machiavelli’s The Prince
+ (C) Ptolemy’s Portolani
+ (D) Marco Polo’s Travels
+ (E) The Memoirs of Kublai Kahn
+106. The Pole Star as a navigational device was useless
+ (A) in the Western Hemisphere
+ (B) north of the equator
+ (C) in the seas of Northern Europe
+ (D) in the north Pacific Ocean
+ (E) south of the equator
+CLEP Western Civilization I
+27
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+107. The first known circumnavigation of the earth was by
+ (A) Amerigo Vespucci
+ (B) Ferdinand Magellan
+ (C) John Cabot
+ (D) Christopher Columbus
+ (E) Vasco da Gama
+108. In reality, the encomienda made the natives of the new world
+ (A) equal to the Spanish
+ (B) slaves of the Spanish
+ (C) masters of the Spanish
+ (D) local rulers for the Spanish
+ (E) subject to rule by Aztec nobles
+109.Portugal’s attempts to dominate Southeast Asian trade were made more difficult mainly because
+ (A) Portugal was too far away
+ (B) Portugal lacked sufficient population to govern an empire
+ (C) the Portuguese were too religious
+ (D) the Portuguese were satisfied by their control of Brazil
+ (E) the Portuguese were expelled from the Spice Islands by Spain
+110. Japan was closed to all European trade EXCEPT for trade with the
+ (A) Spanish
+ (B) English
+ (C) Dutch
+ (D) Portuguese
+ (E) Belgians
+111.The major difference between England’s North American colonies and those of France was that
+ (A) French Canada had a larger European population than did England’s colonies
+ (B) the English colonial population was considerably less than the population of New France
+ (C) the English colonial population was much greater than the French colonial population
+ (D) there were no natural resources in New France to export to Europe
+ (E) England’s colonial population was Catholic, while France’s was Protestant
+CLEP Western Civilization I
+28
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+112. Which of the following was NOT a result of European expansion and exploration?
+ (A) The influx of tremendous amounts of precious metals into Europe
+ (B) The introduction of new foods into Europe
+ (C) The establishment of the Catholic faith in many areas of the New World
+ (D) The introduction of smallpox into Europe
+ (E) The introduction of horses and cattle to the New World
+113. A multiracial society appeared first in
+ (A) British North America
+ (B) Latin America
+ (C) Northern Europe
+ (D) Southern Europe
+ (E) Central Europe
+114. Christianity failed to take root in China in part because of
+ (A) papal condemnation of ancestor worship
+ (B) lack of interest on the part of Catholic religious orders
+ (C) opposition by Muslims
+ (D) the inability of Westerners to learn Chinese
+ (E) the Great Wall
+115.Recent scholarship cites which of the following reasons for the witchcraft craze of the sixteenth and
+seventeenth centuries?
+ (A) The outbreak of religious fervor of the same period
+ (B) Social conditions that threatened old communal values
+ (C) Local politicians used “witches” as scapegoats for their own political problems
+ (D) The direct result of the Protestant–Catholic struggle
+ (E) Fear of immigration and the undermining of Europe’s traditional culture
+116. As Louis XIII’s chief minister, Cardinal Richelieu was MOST successful in
+ (A) evicting the Huguenot presence from France after the La Rochelle rebellion
+ (B) strengthening the central role of the monarchy in domestic and foreign policy
+ (C) creating a reservoir of funds for the treasury
+ (D) emerging victorious in the Fronde revolts of the nobility
+ (E) converting most of the French population to Protestantism
+CLEP Western Civilization I
+29
+Copyright © 2004
+Peterson's
+CLEP is a registered trademark of the College Entrance Examination Board,
+which was not involved in the production of and does not endorse this product.
+117.As a result of the Peace of Westphalia of 1648
+ (A) the German population was to be converted to Catholicism
+ (B) all German states could choose their own religions, any religion except for Calvinism
+ (C) the German states were allowed to determine their religion
+ (D) the institution of the Holy Roman Empire was to rule Germany for the next 100 years
+ (E) the Habsburgs were forced to abdicate as the Holy Roman Emperors
+118. The Parliamentarians were successful in the English Civil War because
+ (A) they received aid from the French
+ (B) their weaponry was superior to that of the King’s forces
+ (C) their army was much larger than the Royalist army
+ (D) of the effectiveness of Oliver Cromwell’s New Model Army
+ (E) they were able to hold King Charles I in prison for the entire war
+119.The patriotic enthusiasm and pride of the English during the era of Queen Elizabeth is BEST
+characterized by
+ (A) the philosophy of John Cabot
+ (B) the plays of William Shakespeare
+ (C) the New Model Army
+ (D) the paintings of Constable and Turner
+ (E) the Puritan work ethic
+120.
+El Greco’s painting in the illustration depicts strong emotions and is an example of which period of art?
+ (A) Gothic
+ (B) Early Renaissance
+ (C) High Renaissance
+ (D) Mannerist
+ (E) Baroque
 
-			// Match questions to their definitions
-			questions.forEach((question, index) => {
-				question.answer = definitions[index];
-			});
 
-			organizedData.push({
-				word,
-				questions
-			});
-		});
 
-		return organizedData;
+
+
+
+
+        `;
+
+	function extractQuestionsAndAnswers(inputText) {
+		const regex = /(\d+\.)\s+([\s\S]+?)\((A)\)\s+([\s\S]+?)\((B)\)\s+([\s\S]+?)\((C)\)\s+([\s\S]+?)\((D)\)\s+([\s\S]+?)\((E)\)\s+([\s\S]+?)\n/g;
+		let match;
+		let output = '';
+
+		while ((match = regex.exec(inputText)) !== null) {
+			const questionNumber = match[1];
+			const questionText = match[2];
+			const answers = [
+				match[4], match[6], match[8], match[10], match[12]
+			];
+
+			output += `<div class="question">
+<br>
+                    <p>${questionNumber} ${questionText}</p>
+                    <ul>
+                        ${answers.map((answer, index) => `<li>(${String.fromCharCode(65 + index)}) ${answer.trim()}</li>`).join('')}
+                    </ul>
+                </div>`;
+		}
+
+		return output;
 	}
 
-	// Sample usage:
-	const inputText = `...`;  // Your provided text here
-	const organizedOutput = organizeData(inputText);
-	console.log(organizedOutput);
-
-
-
+	document.getElementById('output').innerHTML = extractQuestionsAndAnswers(text);
 </script>
 </body>
 </html>
