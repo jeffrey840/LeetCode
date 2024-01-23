@@ -1,0 +1,47 @@
+Mercedes-Benz,A-Class,2022
+Audi,A3,2024
+Audi,A3,2023
+Audi,A4,2024
+Audi,A4,2023
+Audi,A4 allroad,2024
+Audi,A4 allroad,2023
+Audi,A5,2024
+Audi,A5,2023
+Audi,A6,2024
+Audi,A6,2023
+Audi,A6 allroad,2024
+Audi,A6 allroad,2023
+Audi,A7,2024
+Audi,A7,2023
+Audi,A8,2024
+Audi,A8,2023
+GMC,Acadia,2024
+GMC,Acadia,2023
+Hyundai,Accent,2024
+Hyundai,Accent,2023
+Honda,Accord,2022
+Honda,Accord,2024
+Honda,Accord,2023
+Honda,Accord Hybrid,2024
+Honda,Accord Hybrid,2023
+Lucid,Air,2024
+Lucid,Air,2023
+Fisker,Alaska,2025
+Nissan,Altima,2024
+Nissan,Altima,2023
+Nissan,Ariya,2023
+Nissan,Armada,2024
+Nissan,Armada,2023
+Volkswagen,Arteon,2023
+McLaren,Artura,2023
+Subaru,Ascent,2024
+Subaru,Ascent,2023
+Volkswagen,Atlas,2024
+Volkswagen,Atlas,2023
+Volkswagen,Atlas Cross Sport,2024
+Volkswagen,Atlas Cross Sport,2023
+Toyota,Avalon,2022
+Toyota,Avalon Hybrid,2022
+Lamborghini,Aventador,2022
+Lincoln,Aviator,2024
+Lincoln,Aviator,2023
