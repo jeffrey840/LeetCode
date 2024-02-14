@@ -24,5 +24,9 @@ var sortedSquares = function(nums) {
 	}
 	return result;
 
+
+
+
+
 };
 
