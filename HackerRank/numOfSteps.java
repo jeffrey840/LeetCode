@@ -1,3 +1,5 @@
+package HackerRank;
+
 public class numOfSteps {
 
     int numberOfSteps(int num) {

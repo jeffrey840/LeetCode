@@ -1,3 +1,4 @@
+package HackerRank;
 
 class MaxCount {
     public int findMaxConsecutiveOnes(int[] nums) {

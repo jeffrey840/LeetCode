@@ -1,3 +1,4 @@
+package HackerRank;
 
 class richestCustomerWealth {
     public int maximumWealth(int[][] accounts) {
