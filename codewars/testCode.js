@@ -3,9 +3,7 @@
 function gooseFilter (birds) {
 	var geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
 
-	if(birds[2] === geese[0]) {
-		console.log("found")
-	}
+	return birds.filter(bird => !geese.includes(bird));
 
 		};
 
