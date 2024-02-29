@@ -9,6 +9,7 @@ function minTransfers(transactions) {
 		balance[from] -= amount;
 		balance[to] += amount;
 	});
+	console.log(balance)
 
 	// Filter out those who are settled (net balance is 0)
 	const debts = Object.values(balance).filter(b => b !== 0);
@@ -25,14 +26,24 @@ function minTransfers(transactions) {
 			if (debts[start] * debts[i] < 0) { // Only try to settle if one is owed and one owes
 				// Simulate transaction
 				debts[i] += debts[start];
+				console.log(debts[i])
 				minTransactions = Math.min(minTransactions, 1 + settle(debts, start + 1));
 				// Undo transaction for next iteration
+				console.log(debts[i])
 				debts[i] -= debts[start];
 			}
 		}
+		// console.log(minTransactions)
 		return minTransactions;
 	}
 
 	// Step 3: Start the recursive debt settling
+	console.log("-----")
 	return settle(debts);
 }
+
+
+console.log( "Answer : "+ minTransfers([[0,1,10],[2,0,5]]))
+// console.log(minTransfers([[0,1,10],[1,0,1],[1,2,5],[2,0,5]]))
+
+
