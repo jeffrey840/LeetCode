@@ -20,6 +20,4 @@ var majorityElement = function(nums) {
 	// The candidate is the majority element
 	return candidate;
 
-
-
 };
