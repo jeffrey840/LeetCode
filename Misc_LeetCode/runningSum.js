@@ -17,6 +17,9 @@ var runningSum = function(nums) {
 	return runningSums;
 };
 
+
+
+
 // Test cases with logs
 console.log(runningSum([1, 2, 3, 4])); // Expected output: [1, 3, 6, 10]
 console.log(runningSum([1, 1, 1, 1, 1])); // Expected output: [1, 2, 3, 4, 5]
