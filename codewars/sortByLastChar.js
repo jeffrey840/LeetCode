@@ -13,8 +13,4 @@ function last(x){
 	// Return the sorted array
 	return words;
 
-
-
-
-
 }
