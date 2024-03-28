@@ -28,3 +28,8 @@ function longestOnes(nums, k) {
 
 console.log(longestOnes(nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2))
 
+
+
+
+
+
