@@ -35,5 +35,6 @@ function asteroidCollision(asteroids) {
 }
 
 // Example run
-const asteroids = [5, 10, -5];
+const asteroids = [5, 10, -5, 2];
+// asteroids = [8, -10, 5, 12345, -500, -2000, 10]
 asteroidCollision(asteroids);
