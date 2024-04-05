@@ -30,6 +30,11 @@ var validWordAbbreviation = function(word, abbr) {
 		}
 	}
 
+
+
+
+
+
 	// Both the word and abbr should be fully traversed
 	return wordIndex === word.length && abbrIndex === abbr.length;
 };
