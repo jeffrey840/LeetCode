@@ -16,9 +16,5 @@ function solution(inputArray) {
 			longestStrings.push(inputArray[i]);
 		}
 	}
-
-
-
-
 	return longestStrings;
 }
