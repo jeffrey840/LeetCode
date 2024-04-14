@@ -1,6 +1,5 @@
 package project_1;
 
-
 public class AppointmentBST {
     private AppointmentNode root;
 
@@ -18,15 +17,26 @@ public class AppointmentBST {
             return root;
         }
 
-        // Assume appointment times are unique and sorted lexicographically
-        if (appointment.appointmentTime.compareTo(root.data.appointmentTime) < 0) {
+        if (appointment.getAppointmentTime().compareTo(root.data.getAppointmentTime()) < 0) {
             root.left = insertRec(root.left, appointment);
-        } else if (appointment.appointmentTime.compareTo(root.data.appointmentTime) > 0) {
+        } else if (appointment.getAppointmentTime().compareTo(root.data.getAppointmentTime()) > 0) {
             root.right = insertRec(root.right, appointment);
         }
         return root;
     }
 
-    // Methods for searching and deletion by appointment time or patient ID omitted for brevity
-}
+    // In-order traversal to view appointments in order
+    public void inOrderTraversal(AppointmentNode node) {
+        if (node != null) {
+            inOrderTraversal(node.left);
+            System.out.println("Appointment ID: " + node.data.getPatientID() + " Name: " + node.data.getPatientName() +
+                    " Time: " + node.data.getAppointmentTime());
+            inOrderTraversal(node.right);
+        }
+    }
 
+    // Public method to start traversal from root
+    public void displayAppointments() {
+        inOrderTraversal(root);
+    }
+}

@@ -1,30 +1,40 @@
 package project_1;
 
+import java.time.LocalDateTime;
+
 public class PatientAppointment {
+    private int patientID;
+    private String patientName;
+    private LocalDateTime appointmentTime;
 
-    int patientID;
-    String patientName;
-    String appointmentTime; // Use a sortable format, e.g., "YYYY-MM-DD HH:MM"
-
-    public PatientAppointment(int patientID, String patientName, String appointmentTime) {
+    public PatientAppointment(int patientID, String patientName, LocalDateTime appointmentTime) {
         this.patientID = patientID;
         this.patientName = patientName;
         this.appointmentTime = appointmentTime;
     }
 
-    // Getters and setters (omitted for brevity)
+    // Getters and setters
+    public int getPatientID() {
+        return patientID;
+    }
 
-}
-class AppointmentNode {
-    PatientAppointment data;
-    AppointmentNode left, right;
+    public void setPatientID(int patientID) {
+        this.patientID = patientID;
+    }
 
-    public AppointmentNode(PatientAppointment data) {
-        this.data = data;
-        this.left = null;
-        this.right = null;
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
+    public LocalDateTime getAppointmentTime() {
+        return appointmentTime;
+    }
+
+    public void setAppointmentTime(LocalDateTime appointmentTime) {
+        this.appointmentTime = appointmentTime;
     }
 }
-
-
-
