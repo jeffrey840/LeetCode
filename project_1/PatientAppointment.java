@@ -38,6 +38,3 @@ public class PatientAppointment {
         this.appointmentTime = appointmentTime;
     }
 }
-
-
-
