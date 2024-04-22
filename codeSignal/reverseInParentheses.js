@@ -22,3 +22,7 @@ function solution(inputString) {
 	return stack.join('');
 
 }
+
+
+
+
