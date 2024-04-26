@@ -26,6 +26,11 @@ class MyHashMap {
 			}
 		}
 
+
+
+
+
+
 		bucket.push([key, value]);
 		this.size++;
 	}
