@@ -114,3 +114,65 @@ console.log("-----separate question------")
 
 console.log("--------------------------------------------")
 console.log("-----separate question------")
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
