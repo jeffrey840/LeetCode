@@ -49,3 +49,68 @@ class Main {
 }
 
 Main.main();  // Invoke the static main method
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+function findFirstDuplicate(keys) {
+	let hashmap = {};
+	for (let key of keys) {
+		if (key in hashmap) {
+			return key;  // Return the first duplicate found
+		}
+		hashmap[key] = true;  // Mark this key as seen
+	}
+	return undefined;  // No duplicates found
+}
+
+// Example usage:
+let numbers = [2, 3, 5, 2, 8, 5, 6];
+let duplicate = findFirstDuplicate(numbers);
+console.log(`The first duplicate is: ${duplicate}`);
+
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+function twoSum(nums, target) {
+	let map = new Map();
+	for (let i = 0; i < nums.length; i++) {
+		let complement = target - nums[i];
+		if (map.has(complement)) {
+			return [map.get(complement), i];  // Found the two indices
+		}
+		map.set(nums[i], i);  // Store the index of each element
+	}
+	return [];  // In case there is no solution, but the problem statement guarantees one
+}
+
+// Example usage:
+let nums = [2, 7, 11, 15];
+let target = 9;
+console.log(twoSum(nums, target));  // Output: [0, 1]
+
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
+
+
+
+
+
+console.log("--------------------------------------------")
+console.log("-----separate question------")
