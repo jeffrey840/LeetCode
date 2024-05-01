@@ -39,3 +39,6 @@ console.log(`Total sum of list: ${totalSum}`);  // Outputs: Total sum of list: 6
 
 console.log("After calculating sum:");
 printList(head);  // Outputs: 1, 2, 3
+
+
+
