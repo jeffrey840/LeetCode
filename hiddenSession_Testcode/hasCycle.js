@@ -34,3 +34,6 @@ third.next = second;  // Creates a cycle
 console.log("Checking for a cycle after creating one:");
 let cycleExistsAfter = hasCycle(head);
 console.log(`Does the linked list have a cycle? ${cycleExistsAfter}`);  // Expected Output: true
+
+
+
