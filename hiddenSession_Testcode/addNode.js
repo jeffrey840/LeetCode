@@ -31,3 +31,14 @@ let printList = (head) => {
 
 printList(head);  // Outputs: 1, 2, 4, 3
 
+
+
+
+
+
+
+
+
+
+
+
