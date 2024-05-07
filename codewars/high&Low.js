@@ -5,7 +5,7 @@ function highAndLow(numbers){
 	arr = arr.map(Number)
 
 	let max = Math.max(...arr);
-		let min = Math.min(...arr)
+	let min = Math.min(...arr)
 
 	return `${max} ${min}`
 
