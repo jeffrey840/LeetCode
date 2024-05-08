@@ -5,7 +5,12 @@ class ListNode {
 	}
 }
 
-let deleteNode = prevNode => {
+let deleteFirstNode = (head) => {
+	if (!head) return null;
+	return head.next;
+}
+
+let deleteNode = (prevNode) => {
 	if (prevNode.next) {
 		prevNode.next = prevNode.next.next;
 	}
@@ -20,9 +25,6 @@ head.next = second;
 second.next = third;
 third.next = fourth;
 
-// Deleting the third node
-deleteNode(second);
-
 let printList = (head) => {
 	let current = head;
 	while (current !== null) {
@@ -31,4 +33,15 @@ let printList = (head) => {
 	}
 }
 
-printList(head);  // Outputs: 1, 2, 4
+console.log("List before any deletion:");
+printList(head); // Outputs: 1, 2, 3, 4
+
+deleteNode(second);
+console.log("List after deleting the third node:");
+printList(head); // Outputs: 1, 2, 4
+
+head = deleteFirstNode(head);
+console.log("List after deleting the first node:");
+printList(head); // Outputs: 2, 4
+
+
