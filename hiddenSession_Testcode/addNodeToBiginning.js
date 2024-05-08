@@ -5,11 +5,10 @@ class ListNode {
 	}
 }
 
-let addNode = (prevNode, nodeToAdd) => {
-	// Attach the new node to the next node in the list
-	nodeToAdd.next = prevNode.next;
-	// Then link the previous node to the new node
-	prevNode.next = nodeToAdd;
+let addNodeToBeginning = (head, nodeToAdd) => {
+	nodeToAdd.next = head;
+	head = nodeToAdd;
+	return head;
 }
 
 let head = new ListNode(1);
@@ -27,11 +26,13 @@ let printList = (head) => {
 	}
 }
 
-console.log("List before adding new node:");
+console.log("List before adding new node to beginning:");
 printList(head);  // Outputs: 1, 2, 3
 
-let newNode = new ListNode(4);
-addNode(second, newNode);
+let newNode = new ListNode(0);
+head = addNodeToBeginning(head, newNode);
 
-console.log("List after adding new node:");
-printList(head);  // Outputs: 1, 2, 4, 3
+console.log("List after adding new node to beginning:");
+printList(head);  // Outputs: 0, 1, 2, 3
+
+
