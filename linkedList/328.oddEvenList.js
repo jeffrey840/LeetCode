@@ -30,7 +30,3 @@ var oddEvenList = function(head) {
 
 
 };
-
-
-
-
