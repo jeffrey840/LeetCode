@@ -9,9 +9,6 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-
-
-
 var oddEvenList = function(head) {
 	if(!head || !head.next) {
 		return head;
