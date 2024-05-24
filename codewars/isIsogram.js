@@ -13,6 +13,5 @@ function isIsogram(str){
 
 }
 
-
 console.log(isIsogram("abcc"))
 console.log(isIsogram("abc"))
