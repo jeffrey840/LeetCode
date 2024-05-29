@@ -9,8 +9,4 @@ function longest(s1, s2) {
 	const sortedUniqueChars = Array.from(uniqueChars).sort().join('');
 
 	return sortedUniqueChars;
-
-
-
-
 }
