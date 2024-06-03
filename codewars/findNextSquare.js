@@ -8,5 +8,3 @@ function findNextSquare(sq) {
 	return -1;
 
 }
-
-
