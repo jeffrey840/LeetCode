@@ -9,5 +9,3 @@ function findNextSquare(sq) {
 
 }
 
-
-
