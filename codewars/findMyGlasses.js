@@ -14,6 +14,9 @@ function findMyGlasses(list) {
 	return -1;
 }
 
+
+
+
 // Example usage
 console.log(findMyGlasses(["phone", "O-O", "coins", "keys"]));  // Output: 1
 console.log(findMyGlasses(["OO", "wallet", "O##O", "O----O"]));
