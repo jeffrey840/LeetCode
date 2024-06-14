@@ -7,5 +7,3 @@ function symmetricPoint(P, Q) {
 	const P1y = 2 * Qy - Py;
 	return [P1x, P1y];
 }
-
-
