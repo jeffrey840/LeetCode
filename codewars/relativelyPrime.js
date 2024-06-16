@@ -11,6 +11,3 @@ function relativelyPrime(n, arr) {
 	return arr.filter(x => gcd(n, x) === 1);
 }
 
-
-
-
