@@ -12,3 +12,7 @@ function makeGood(s) {
 
 	return stack.join(''); // Join the stack to form the final good string
 }
+
+
+
+
