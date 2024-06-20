@@ -38,3 +38,6 @@ queue.enqueue(30);
 console.log(queue.dequeue()); // Output: 10
 console.log(queue.dequeue()); // Output: 20
 console.log(queue.front());   // Output: 30
+
+
+
