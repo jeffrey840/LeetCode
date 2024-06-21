@@ -20,7 +20,5 @@ MovingAverage.prototype.next = function(val) {
 	this.queue.push(val);
 	this.currentSum += val;
 	return this.currentSum / this.queue.length;
-
-
 };
 
