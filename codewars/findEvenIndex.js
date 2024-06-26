@@ -21,6 +21,9 @@ function findEvenIndex(arr) {
 	return -1; // Step 4
 }
 
+
+
+
 // Test cases
 console.log(findEvenIndex([1, 2, 3, 4, 3, 2, 1])); // Should return 3
 console.log(findEvenIndex([1, 100, 50, -51, 1, 1])); // Should return 1
