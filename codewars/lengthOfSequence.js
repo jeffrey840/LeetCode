@@ -27,6 +27,9 @@ var lengthOfSequence = function(arr, n) {
 	}
 };
 
+
+
+
 // Example usage:
 console.log(lengthOfSequence([0, -3, 7, 4, 0, 3, 7, 9, 7], 7)); // Output: 0, as 7 appears more than twice
 console.log(lengthOfSequence([0, -3, 7, 4, 0, 3, 9], 7));       // Output: 0, only one occurrence of 7
