@@ -8,8 +8,6 @@ function openLockers(numberOfLockers) {
 
 	return openLockers;
 }
-
 // Example usage:
 console.log(openLockers(100)); // Output: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 console.log(openLockers(10));  // Output: [1, 4, 9]
-
