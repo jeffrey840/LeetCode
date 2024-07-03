@@ -21,10 +21,3 @@ function blowCandles(str) {
 	return totalBlows;
 }
 
-
-
-
-
-
-
-
