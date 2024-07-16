@@ -14,3 +14,4 @@ function mergeStrings(first, second){
 	// If no overlap is found, simply concatenate the strings
 	return first + second;
 }
+
