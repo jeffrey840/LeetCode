@@ -15,7 +15,3 @@ function mergeStrings(first, second){
 	return first + second;
 }
 
-
-
-
-
