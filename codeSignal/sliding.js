@@ -23,7 +23,5 @@ function sliding(nums, k) {
 			result.push(nums[deq[0]]);
 		}
 	}
-
 	return result;
-
 }
