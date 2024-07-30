@@ -25,5 +25,3 @@ function sliding(nums, k) {
 	}
 	return result;
 }
-
-
