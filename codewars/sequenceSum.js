@@ -22,3 +22,6 @@ function sequenceSum(begin, end, step) {
 
 // Test case
 console.log(`Result: ${sequenceSum(1, 5, 3)}`);  // Output: 5
+
+
+
