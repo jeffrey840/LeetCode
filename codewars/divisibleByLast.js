@@ -11,6 +11,3 @@ function divisibleByLast(n) {
 	};
 	return arr;
 }
-
-
-
