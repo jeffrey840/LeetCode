@@ -11,10 +11,6 @@ var plusOne = function(digits) {
 		digits[i] = 0;
 	}
 
-
-
-
-
 	// If all digits were 9, we end up here, so we need to add a 1 at the beginning
 	digits.unshift(1);
 	return digits;
