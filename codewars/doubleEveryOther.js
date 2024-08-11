@@ -8,4 +8,6 @@ function doubleEveryOther(a) {
 	return a
 }
 
+
+
 console.log(doubleEveryOther([1,2,3,4]))
