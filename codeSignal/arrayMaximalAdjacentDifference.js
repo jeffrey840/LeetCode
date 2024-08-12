@@ -13,7 +13,6 @@ function solution(inputArray) {
 			maxDifference = currentDifference;
 		}
 	}
-
 	// Return the maximum difference found
 	return maxDifference;
 
