@@ -22,4 +22,8 @@ function solution(inputArray) {
 }
 
 
+
+
+
+
 console.log(solution([2,4,1,0]))
