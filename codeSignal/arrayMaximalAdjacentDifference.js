@@ -16,13 +16,6 @@ function solution(inputArray) {
 	// Return the maximum difference found
 	return maxDifference;
 
-
-
 }
-
-
-
-
-
 
 console.log(solution([2,4,1,0]))
