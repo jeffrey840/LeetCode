@@ -8,3 +8,7 @@ function handOutGift(name) {
 		console.log(`${name} receives a gift.`);
 	}
 }
+
+
+
+
