@@ -13,5 +13,3 @@ function likeOrDislike(buttons) {
 
 	return state;
 }
-
-
