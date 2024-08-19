@@ -17,3 +17,6 @@ function sumOrProduct(array, n) {
 		return "same";
 	}
 }
+
+
+
