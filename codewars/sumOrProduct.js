@@ -18,5 +18,3 @@ function sumOrProduct(array, n) {
 	}
 }
 
-
-
