@@ -12,3 +12,7 @@ function alternate(items) {
 	// If no true value was found, return false
 	return false;
 }
+
+
+
+
